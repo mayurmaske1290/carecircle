@@ -92,7 +92,7 @@ app.all("/mcp", (req, res, next) => {
   if (!["GET", "POST", "DELETE"].includes(req.method)) return res.status(405).end();
   void handleMcp(req, res).catch(next);
 });
-const clientDist = resolve(process.cwd(), "../client/dist");
+const clientDist = resolve(process.cwd(), "client/dist");
 if (existsSync(clientDist)) {
   app.use(express.static(clientDist));
   app.get("*", (_req, res) => res.sendFile(resolve(clientDist, "index.html")));
